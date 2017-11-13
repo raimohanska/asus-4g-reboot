@@ -1,16 +1,14 @@
 loginToken = process.env.logintoken
 if (!loginToken) {
-  throw new Error("logintoken environment variable missing")
+  throw new Error('logintoken environment variable missing')
 }
 
-loginUrl = "http://192.168.1.1/login.cgi"
+loginUrl = 'http://192.168.1.1/login.cgi'
 
 request = require('request').defaults({jar: true});
-cheerio = require('cheerio')
-R = require('ramda')
 
 let login = callback => { request({
-  method: "POST",
+  method: 'POST',
   uri: loginUrl,
   headers: {
     'Referer': 'http://192.168.1.1/Main_Login.asp'
@@ -20,7 +18,7 @@ let login = callback => { request({
   }
 }, (error, response, body) => {
   if (error) {
-    console.log("error", error)
+    console.log('error', error)
   } else if (response.headers['set-cookie']) {
     callback()
   } else {
@@ -44,7 +42,7 @@ let reboot = () => {
     }
   }, (error, response, body) => {
     if (error) {
-      console.log("error", error)
+      console.log('error', error)
     } else {
       console.log('reboot response code', response.statusCode)
     }
