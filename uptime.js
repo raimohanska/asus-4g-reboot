@@ -1,5 +1,5 @@
 const login = require('./login')
-
+const logout = require('./logout')
 
 request = require('request').defaults({jar: true});
 
@@ -15,6 +15,7 @@ let uptime = () => {
       let uptimeSecs = uptime.split(' ')[0]
       console.log(uptimeSecs)
     }
+    logout()
   })
 }
 
